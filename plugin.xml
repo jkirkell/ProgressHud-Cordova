@@ -22,7 +22,7 @@
                     
         <!-- Cordova 2.5+ -->
         <config-file target="config.xml" parent="/widget/plugins">
-            <feature ="ProgressHud">
+            <feature name="ProgressHud">
             	<param name="ios-package" value="ProgressHud" />
             </feature>
         </config-file>
