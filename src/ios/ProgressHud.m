@@ -8,23 +8,21 @@
 
 #import "ProgressHud.h"
 
+
 @implementation ProgressHud
 
 @synthesize callbackID = _callbackID;
 @synthesize progressHUD = _progressHUD;
 
--(void)show:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
-	//NSLog(@"set:%@\n withDict:%@", arguments, options);
-
+-(void) show:(CDVInvokedUrlCommand*)command {
 	self.progressHUD = nil;
 	self.progressHUD = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
 	self.progressHUD.mode = MBProgressHUDModeIndeterminate;
 
 	[self set:arguments withDict:options];
-
 }
 
--(void)set:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+-(void) set:(CDVInvokedUrlCommand*)command {
 	//NSLog(@"set:%@\n withDict:%@", arguments, options);
 
 	// The first argument in the arguments parameter is the callbackID.
@@ -63,10 +61,9 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	//Call  the Success Javascript function
 	[self writeJavascript: [pluginResult toSuccessCallbackString:self.callbackID]];
-
 }
 
--(void)hide:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+-(void) hide:(CDVInvokedUrlCommand*)command {
 	//NSLog(@"hide:%@\n withDict:%@", arguments, options);
 
 	// The first argument in the arguments parameter is the callbackID.
@@ -94,7 +91,6 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
 	//Call  the Success Javascript function
 	[self writeJavascript: [pluginResult toSuccessCallbackString:self.callbackID]];
-
 }
 
 @end

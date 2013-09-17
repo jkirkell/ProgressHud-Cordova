@@ -6,73 +6,73 @@
 // Copyright 2011 Olivier Louvignes. All rights reserved.
 // MIT Licensed
 
-(function(cordova) {
+var exec = function (methodName, options, success, error) {
+    cordova.exec(success, error, "ProgressHud", methodName, options);
+};
 
-	function ProgressHud() {}
+var log = function (msg) {
+    console.log("ProgressHud[js]: " + msg);
+};
 
-	ProgressHud.prototype.show = function(options, callback) {
-		if(!options) options = {};
-		var scope = options.scope || null;
-		delete options.scope;
+var ProgressHud = function () {
+    this.options = {};
+};
 
-		var service = 'ProgressHud',
-			action = 'show',
-			callbackId = service + (cordova.callbackId + 1);
+ProgressHud.prototype.show = function (options, callback) {
+	if(!options) options = {};
+	var scope = options.scope || null;
+	delete options.scope;
 
-		var config = {
-			mode: options.mode || 'indeterminate',
-			labelText: options.labelText || 'Loading...',
-			detailsLabelText: options.detailsLabelText || '',
-			progress: options.progress || 0
-		};
+	var service = 'ProgressHud',
+		action = 'show',
+		callbackId = service + (cordova.callbackId + 1);
 
-		var _callback = function(result) {
-			if(typeof callback == 'function') callback.apply(scope, arguments);
-		};
-
-		return cordova.exec(_callback, _callback, service, action, [config]);
-
+	var config = {
+		mode: options.mode || 'indeterminate',
+		labelText: options.labelText || 'Loading...',
+		detailsLabelText: options.detailsLabelText || '',
+		progress: options.progress || 0
 	};
 
-	ProgressHud.prototype.set = function(options, callback) {
-		if(!options) options = {};
-		var scope = options.scope || null;
-		delete options.scope;
-
-		var service = 'ProgressHud',
-			action = 'set',
-			callbackId = service + (cordova.callbackId + 1);
-
-		var _callback = function(result) {
-			if(typeof callback == 'function') callback.apply(scope, arguments);
-		};
-
-		return cordova.exec(_callback, _callback, service, action, [options]);
-
+	var _callback = function(result) {
+		if(typeof callback == 'function') callback.apply(scope, arguments);
 	};
+	
+	return exec('show', options, callback, callback);
+};
 
-	ProgressHud.prototype.hide = function(options, callback) {
-		if(!options) options = {};
-		var scope = options.scope || null;
-		delete options.scope;
+ProgressHud.prototype.set = function (options, callback) {
+	if(!options) options = {};
+	var scope = options.scope || null;
+	delete options.scope;
 
-		var service = 'ProgressHud',
-			action = 'hide',
-			callbackId = service + (cordova.callbackId + 1);
+	var service = 'ProgressHud',
+		action = 'set',
+		callbackId = service + (cordova.callbackId + 1);
 
-		var config = {};
-
-		var _callback = function(result) {
-			if(typeof callback == 'function') callback.apply(scope, arguments);
-		};
-
-		return cordova.exec(_callback, _callback, service, action, [config]);
-
+	var _callback = function(result) {
+		if(typeof callback == 'function') callback.apply(scope, arguments);
 	};
+	
+	return exec('set', options, callback, callback);
+};
 
-	cordova.addConstructor(function() {
-		if(!window.plugins) window.plugins = {};
-		window.plugins.progressHud = new ProgressHud();
-	});
+ProgressHud.prototype.hide = function (options, callback) {
+	if(!options) options = {};
+	var scope = options.scope || null;
+	delete options.scope;
 
-})(window.cordova || window.Cordova);
+	var service = 'ProgressHud',
+		action = 'hide',
+		callbackId = service + (cordova.callbackId + 1);
+
+	var config = {};
+
+	var _callback = function(result) {
+		if(typeof callback == 'function') callback.apply(scope, arguments);
+	};
+	
+	return exec('hide', options, callback, callback);
+};
+
+module.exports = new ProgressHud();
