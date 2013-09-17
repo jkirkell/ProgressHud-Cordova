@@ -1,9 +1,10 @@
 //
-//  ProgressHud.m
+//  ProgressHud.h
 //
-// Created by Olivier Louvignes on 04/25/2012.
+// Created by Jeff Kirkell on 09/17/2013.
+// 
 //
-// Copyright 2011 Olivier Louvignes. All rights reserved.
+// Copyright 2013 Jeff Kirkell. All rights reserved.
 // MIT Licensed
 
 #import <Cordova/CDVPlugin.h>
@@ -23,9 +24,5 @@
 - (void) show:(CDVInvokedUrlCommand*)command;
 - (void) set:(CDVInvokedUrlCommand*)command;
 - (void) hide:(CDVInvokedUrlCommand*)command;
-
-- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
-- (void) set:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
-- (void) hide:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end
