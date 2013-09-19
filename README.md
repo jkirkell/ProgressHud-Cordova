@@ -12,6 +12,5 @@
 See [Cordova Plugman](https://github.com/apache/cordova-plugman).
 
 ## TODO
- * Update the `set` command to work
  * Example usage
  * Unit tests
