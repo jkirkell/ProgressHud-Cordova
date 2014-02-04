@@ -9,10 +9,10 @@
 
     cordova plugin add https://github.com/jkirkell/ProgressHud-Plugman.git
     
-    then
-    
-    cordova buid ios
+### When ready to build, just use Cordova-cli
 
+    cordova build ios
+    
 ## TODO
  * Example usage
  * Unit tests
