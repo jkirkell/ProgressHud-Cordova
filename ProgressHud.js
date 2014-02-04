@@ -1,4 +1,3 @@
-cordova.define("com.phonegap.plugins.progresshud.ProgressHud", function(require, exports, module) {//
 //  ProgressHud.js
 //
 // Originally created by Olivier Louvignes on 04/25/2012.
@@ -73,6 +72,3 @@ ProgressHud.prototype.hide = function (options, callback) {
 	
 	return exec(methodName, this.serviceName, options, callback, callback);
 };
-
-module.exports = new ProgressHud();
-});
