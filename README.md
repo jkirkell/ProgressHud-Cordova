@@ -5,11 +5,13 @@
 
 ## Install the Plugin
 
-### Automatically using Plugman
+### Automatically using Cordova-cli
 
-    plugman install --platform ios --project <directory> --plugin https://github.com/jkirkell/ProgressHud-Plugman.git
-
-See [Cordova Plugman](https://github.com/apache/cordova-plugman).
+    cordova plugin add https://github.com/jkirkell/ProgressHud-Plugman.git
+    
+    then
+    
+    cordova buid ios
 
 ## TODO
  * Example usage
